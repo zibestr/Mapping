@@ -1,10 +1,12 @@
 # Mapping вузов платформы проекта "Твой Ход"
 ## Задача
-1. В таблице *users* заменить текущие **school_id** на **новые id** с помощью файла **mapping.csv** (если для старого school_id учебного заведения нет соответствия в новом списке, то поставить **null** вместо нового id).
-2. В таблице *educational_institution_user* заменить текущие **educational_institution_id** на **новые id** с помощью файла **mapping.csv**.
-3. Сделать бэкап таблицы **educational_institutions** (на случай непредвиденных ошибок).
-4. Очистить таблицу **educational_institutions** в БД проекта, сохранив структуру таблицы.
-5. Перенести значения полей в таблицу **educational_institutions** из данных с файла **new_db.csv**, а поля *web_address*, *phone*, *director_fio*, *email*, *address_fact*, *legal_org_type*, *municipal_unit_id*, *oktmo*, *type*, *country_id*, *okato* заполнить **null** значениями.
+1. Сделать бэкап таблицы **educational_institutions** (на случай непредвиденных ошибок).
+2. В таблице **educational_institutions** перезаписать строки из файла **mapping.csv** по следующему правилу:
+    - если *id* из **mapping.csv** уже есть в *id* **educational_institutions**, то перезаписать значения полей для этой строки из **mapping.csv** (поля *web_address*, *phone*, *director_fio*, *email*, *address_fact*, *legal_org_type*, *municipal_unit_id*, *oktmo*, *type*, *country_id*, *okato* заполнить **null** значениями);
+    - если *id* из **mapping.csv** нет в *id* **educational_institutions**, то добавить запись со значениями из **mapping.csv** (поля *web_address*, *phone*, *director_fio*, *email*, *address_fact*, *legal_org_type*, *municipal_unit_id*, *oktmo*, *type*, *country_id*, *okato* заполнить **null** значениями);
+3. В таблице *users* заменить текущие **school_id** на **новые id** с помощью файла **mapping.csv** (если для старого school_id учебного заведения нет соответствия в новом списке, то поставить **null** вместо нового id).
+4. В таблице *educational_institution_user* заменить текущие **educational_institution_id** на **новые id** с помощью файла **mapping.csv**.
+5. Удалить из таблицы **educational_institutions** записи, *id* которых нет в **mapping.csv**.
 ## Пояснительная записка
 ### new_db.csv
 Новая таблица вузов для БД
